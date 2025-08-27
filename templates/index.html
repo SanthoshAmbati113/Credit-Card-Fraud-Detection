@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Credit Card Fraud Detection</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; }
+        .form-container {
+            max-width: 500px; margin: auto; padding: 20px;
+            border: 1px solid #ccc; border-radius: 10px;
+        }
+        h2 { text-align: center; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; }
+        button {
+            background: #4CAF50; color: white; padding: 10px;
+            border: none; border-radius: 5px; cursor: pointer;
+        }
+        button:hover { background: #45a049; }
+        .result { margin-top: 20px; text-align: center; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Credit Card Fraud Detection</h2>
+        <form action="/predict" method="post">
+            <label>Transaction Amount:</label>
+            <input type="text" name="amount" placeholder="e.g. 200.5">
+
+            <label>Other Features (V1 - V29, comma separated):</label>
+            <textarea name="features" placeholder="e.g. 0.1, -0.5, 1.2, ... up to V29"></textarea>
+
+            <button type="submit">Check Fraud</button>
+        </form>
+
+        <div class="result">
+            {% if prediction_text %}
+                <p>{{ prediction_text }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
